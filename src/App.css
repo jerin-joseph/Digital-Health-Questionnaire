@@ -1,11 +1,22 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* 
+*{
+  font-family: 'Montserrat', sans-serif !important;
+} */
+body{
+  font-family: 'Montserrat', sans-serif;
+  background-color: #7ad3c3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
+  
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,26 +24,89 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.board{
+  /* border: 1px solid black; */
+  /* border-radius: 1rem; */
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.card{
+  width: 25rem;
+  height: 40rem; 
+  background-color: white;
+  border-radius: 0.8rem !important;
+  /* padding: 1.5rem; */
+  
+  /* box-shadow: 50em 20rem black;   */
+}
+
+
+.header{
+  display: flex;
+  height: 2.5rem;
+}
+.title{
+  color: #3f6072;
+  font-weight: 600 !important;
+}
+
+.backButton{
+  flex: 1;
+  margin-left: -30px;
+}
+
+.score{
+  flex: 1;
+}
+
+
+.question{
+  display: flex;
+  /* justify-content: space-around; */
+  /* border: 1px solid red; */
+  flex-direction: column;
+  margin-top: auto;
+  height: 35rem;
+
+}
+.questionWrapper{
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.questionText{
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  font-weight: 600;
+  font-variant: bold;
+  font-size: 1.5em;
+  /* height: 15rem; */
+  display: flex;
+  flex: 1;
+  color: #3f6072;
+  justify-content:flex-end;
+  align-items: end;
+  padding: 1rem;
+}
+.options{
+  flex: 1;
+}
+.optionButton{
+  width: 10rem;
+  padding: 5px !important;
+  margin: 10px !important;
+  border-radius: 2rem !important;
+}
+.next{
+  height: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nextButton{
+  margin-top: auto;
+  width: 20rem;
 }

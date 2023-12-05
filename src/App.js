@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Board from './components/Board';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#87d6c7',
+      main: '#6accba',
+      dark: '#4a8e82',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+  typography: {
+    fontFamily: 'Montserrat',
+    fontWeight: 600,
+  },
+});
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Board/>
     </div>
+    </ThemeProvider>
   );
 }
 
