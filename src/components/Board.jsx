@@ -23,10 +23,9 @@ export default function Board() {
   }, [completed]);
 
   const handleNext = (answer) => {
-    setScores([...scores, answer]);
+    setScores([...scores, answer.score]);
     setQuestions([...questions, currentQuestion]);
     setProgress((questions.length + 1) * 10);
-    // setTimeout(() => {
     if (currentQuestion.next[0].next_question) {
       const nextQuestion = findNextQuestion(answer);
       setCurrentQuestion(nextQuestion);
@@ -34,7 +33,6 @@ export default function Board() {
       setCompleted(true);
       setProgress(100);
     }
-    // }, 2000);
   };
   const findNextQuestion = (ans) => {
     let nextQuestionId = "";
@@ -53,8 +51,8 @@ export default function Board() {
 
   const calculateScore = (scores) => {
     let total = 0;
-    for (let item of scores) {
-      total += parseInt(item.score);
+    for (let score of scores) {
+      total += parseInt(score);
     }
     return total;
   };
