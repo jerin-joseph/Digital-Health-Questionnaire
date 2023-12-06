@@ -1,8 +1,6 @@
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { ReactComponent as SuccessIcon } from "../assets/icons/success/outline.svg";
-import { ReactComponent as NextIcon } from "../assets/icons/chevron/right.svg";
-import Chip from "@mui/material/Chip";
 import ActionButton from "./ActionButton";
 
 export default function Question({ question, answers, selectOption }) {
@@ -19,14 +17,7 @@ export default function Question({ question, answers, selectOption }) {
       <div className="questionWrapper">
         <div className="questionText">
           {question}
-          <Chip
-            size="small"
-            sx={{
-              width: "3rem",
-              height: "3px",
-            }}
-            className="divider"
-          />
+          <div className="divider"></div>
         </div>
 
         <div className="options">
@@ -39,15 +30,10 @@ export default function Question({ question, answers, selectOption }) {
                   }
                   key={ans.id}
                   value={ans.score}
-                  // onClick={(e) => calculateScore(ans)}
                   onClick={() => setChoice(ans)}
                   className="optionButton"
                   endIcon={
-                    choice && choice.id === ans.id ? (
-                      <SuccessIcon fill="#7ad3c3" stroke="#7ad3c3" />
-                    ) : (
-                      <></>
-                    )
+                    choice && choice.id === ans.id ? <SuccessIcon /> : <></>
                   }
                 >
                   {ans.label}
@@ -57,7 +43,11 @@ export default function Question({ question, answers, selectOption }) {
         </div>
       </div>
       <div className="next">
-        <ActionButton text={"Next"} handleClick={handleClick} />
+        <ActionButton
+          text={"Next"}
+          handleClick={handleClick}
+          disabled={!choice}
+        />
       </div>
     </div>
   );

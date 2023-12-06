@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/* 
-*{
-  font-family: 'Montserrat', sans-serif !important;
-} */
+
 body{
   font-family: 'Montserrat', sans-serif;
   background-color: #7ad3c3;
@@ -24,22 +21,11 @@ body{
   }
 }
 
-
-.board{
-  /* border: 1px solid black; */
-  /* border-radius: 1rem; */
-  font-family: 'Montserrat', sans-serif;
-}
-
-
 .card{
   width: 25rem;
   height: 40rem; 
   background-color: white;
   border-radius: 0.8rem !important;
-  /* padding: 1.5rem; */
-  
-  /* box-shadow: 50em 20rem black;   */
 }
 
 
@@ -51,22 +37,18 @@ body{
   color: #3f6072;
   font-weight: 600 !important;
   padding-top: 5px;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .backButton{
-  flex: 1;
-  margin-left: -3rem;
+  margin-right: -40px;
 }
 
-.score{
-  flex: 1;
-}
 
 
 .question{
   display: flex;
-  /* justify-content: space-around; */
-  /* border: 1px solid red; */
   flex-direction: column;
   margin-top: auto;
   height: 35rem;
@@ -86,7 +68,6 @@ body{
   font-weight: 600;
   font-variant: bold;
   font-size: 1.5em;
-  /* height: 15rem; */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -98,6 +79,10 @@ body{
 .divider{
   margin-right: auto;
   margin-top: 1rem;
+  width: 3rem;
+  height: 0.2rem;
+  background-color: #e4eaee;
+  border-radius: 2rem;
 }
 .options{
   flex: 1;
@@ -116,6 +101,7 @@ body{
 .nextButton{
   margin-top: auto;
   width: 22rem;
+  padding: 0.6rem !important;
 }
 
 .nextWrapper{
@@ -126,12 +112,14 @@ body{
 }
 .nextText{
   margin-left: auto;
-  margin-bottom: 5px;
+  font-weight: 600;
+
 }
+
 .nextIcon{
+  display: flex;
   margin-left: auto;
-  margin-right: -10px;
-  margin-top: 5px;
+  margin-right: 0px;
 }
 
 .outcomeContainer{
@@ -140,11 +128,9 @@ body{
   align-items: center;
   justify-content: center;
   height: 35rem;
-  /* border: 1px solid red; */
   color:#3f6072 ;
 } 
 .outcomeContent{
-  /* border: 1px solid green; */
   flex-grow: .7; 
   display: flex;
   justify-content: center;
@@ -153,6 +139,20 @@ body{
   text-align: left;
 }
 .restart{
-  /* border: 1px solid green; */
   margin-top: auto;
+}
+
+.header svg path {
+  fill: #7ad3c3 !important;
+  stroke: #7ad3c3 !important;
+}
+
+/* .optionButton svg path{
+  fill: #7ad3c3  !important;
+  stroke: #7ad3c3 !important;
+} */
+
+.nextButton svg path {
+  /* fill: #fff !important; */
+  /* stroke: #fff !important; */
 }

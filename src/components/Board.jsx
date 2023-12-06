@@ -9,33 +9,34 @@ import Header from "./Header";
 
 export default function Board() {
   const [scores, setScores] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(Data.questions[0]);
   const [completed, setCompleted] = useState(false);
   const [outcome, setOutcome] = useState(null);
-  const [questions, setQuestions] = useState([]);
   const [progress, setProgress] = useState(0);
 
-  // useEffect(() => {
-  //   console.log(questions, scores, progress);
-  // }, [questions, scores, progress]);
+  useEffect(() => {
+    if (completed) {
+      const outcome = findOutcome(calculateScore(scores));
+      setOutcome(outcome);
+    }
+  }, [completed]);
 
   const handleNext = (answer) => {
+    setScores([...scores, answer]);
     setQuestions([...questions, currentQuestion]);
     setProgress((questions.length + 1) * 10);
-    setScores([...scores, answer]);
+    // setTimeout(() => {
     if (currentQuestion.next[0].next_question) {
       const nextQuestion = findNextQuestion(answer);
       setCurrentQuestion(nextQuestion);
     } else {
       setCompleted(true);
       setProgress(100);
-      const totalScore = calculateScore(currentQuestion.next, scores);
-      const outcome = findOutcome(currentQuestion.next, totalScore);
-      setOutcome(outcome);
     }
+    // }, 2000);
   };
   const findNextQuestion = (ans) => {
-    let nextQuestion = null;
     let nextQuestionId = "";
     if (currentQuestion.next.length > 1) {
       nextQuestionId = currentQuestion.next.find(
@@ -44,11 +45,13 @@ export default function Board() {
     } else {
       nextQuestionId = currentQuestion.next[0].next_question;
     }
-    nextQuestion = Data.questions.find((item) => item.id === nextQuestionId);
+    const nextQuestion = Data.questions.find(
+      (item) => item.id === nextQuestionId
+    );
     return nextQuestion;
   };
 
-  const calculateScore = (nextStep, scores) => {
+  const calculateScore = (scores) => {
     let total = 0;
     for (let item of scores) {
       total += parseInt(item.score);
@@ -56,9 +59,11 @@ export default function Board() {
     return total;
   };
 
-  const findOutcome = (nextStep, totalScore) => {
+  const findOutcome = (totalScore) => {
     let outcome = "";
-    for (let item of nextStep) {
+    const outcomeList = currentQuestion.next;
+    //assuming outcomes are sorted in json
+    for (let item of outcomeList) {
       if (item.max_score) {
         if (totalScore <= item.max_score) {
           outcome = item.outcome;
@@ -93,7 +98,6 @@ export default function Board() {
   return (
     <div className="board">
       <Card className="card" sx={{ boxShadow: 3 }}>
-        {/* {console.log(scores)} */}
         <CardContent>
           <Header
             goBack={goBack}
