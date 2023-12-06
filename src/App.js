@@ -14,13 +14,17 @@ const theme = createTheme({
       light: '#ff7961',
       main: '#f44336',
       dark: '#ba000d',
-      contrastText: '#000',
+      contrastText: '#3f6072',
     },
   },
   typography: {
     fontFamily: 'Montserrat',
     fontWeight: 600,
+    button: {
+      textTransform: 'none'
+    }
   },
+  
 });
 
 function App() {

@@ -1,5 +1,5 @@
 import Question from "./Question";
-import Data from "../data.json";
+import Data from "../assets/data/data.json";
 import { useEffect, useState } from "react";
 import Outcome from "./Outcome";
 import Card from "@mui/material/Card";
@@ -9,15 +9,15 @@ import Header from "./Header";
 
 export default function Board() {
   const [scores, setScores] = useState([]);
-  const [currentQuestion, setcurrentQuestion] = useState(Data.questions[0]);
+  const [currentQuestion, setCurrentQuestion] = useState(Data.questions[0]);
   const [completed, setCompleted] = useState(false);
   const [outcome, setOutcome] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    console.log(questions, scores, progress);
-  }, [questions, scores, progress]);
+  // useEffect(() => {
+  //   console.log(questions, scores, progress);
+  // }, [questions, scores, progress]);
 
   const handleNext = (answer) => {
     setQuestions([...questions, currentQuestion]);
@@ -25,19 +25,16 @@ export default function Board() {
     setScores([...scores, answer]);
     if (currentQuestion.next[0].next_question) {
       const nextQuestion = findNextQuestion(answer);
-      setcurrentQuestion(nextQuestion);
+      setCurrentQuestion(nextQuestion);
     } else {
       setCompleted(true);
       setProgress(100);
       const totalScore = calculateScore(currentQuestion.next, scores);
-      console.log(totalScore);
       const outcome = findOutcome(currentQuestion.next, totalScore);
       setOutcome(outcome);
-      console.log(outcome);
     }
   };
   const findNextQuestion = (ans) => {
-    console.log("finding next qn");
     let nextQuestion = null;
     let nextQuestionId = "";
     if (currentQuestion.next.length > 1) {
@@ -77,10 +74,20 @@ export default function Board() {
   const goBack = () => {
     if (questions.length) {
       const prevQuestion = questions.pop();
-      setcurrentQuestion(prevQuestion);
+      setCurrentQuestion(prevQuestion);
       scores.pop();
       setScores(scores);
     }
+  };
+
+  const handleRestart = (e) => {
+    e.preventDefault();
+    setCompleted(false);
+    setProgress(0);
+    setScores([]);
+    setQuestions([]);
+    setCurrentQuestion(Data.questions[0]);
+    setOutcome(null);
   };
 
   return (
@@ -106,6 +113,7 @@ export default function Board() {
               <Outcome
                 text={outcome.text}
                 showBookingButton={outcome.show_booking_button}
+                handleRestart={handleRestart}
               />
             )}
           </Typography>

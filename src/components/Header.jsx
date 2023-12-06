@@ -1,8 +1,8 @@
 import IconButton from "@mui/material/IconButton";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
 import Box from "@mui/material/Box";
+import { ReactComponent as BackButton } from "../assets/icons/chevron/left.svg";
 
 const Header = ({ steps, completed, goBack, progress }) => {
   return (
@@ -11,7 +11,7 @@ const Header = ({ steps, completed, goBack, progress }) => {
         <div className="backButton">
           {steps > 0 && !completed && (
             <IconButton aria-label="delete" onClick={goBack}>
-              <ArrowBackIosIcon color="primary" />
+              <BackButton fill="#7ad3c3" stroke="#7ad3c3" />
             </IconButton>
           )}
         </div>
