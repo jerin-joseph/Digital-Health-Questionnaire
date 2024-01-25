@@ -1,3 +1,22 @@
+Background
+
+This project is intended to create a questionnaire to collect information about a patient's symptoms and suggest an action for thepatient to take (for example, booking a digital appointment with one of our doctors. To collect this information, we ask the patient a series of questions. Depending on the answer to each question, a new question will be shown until we reach a conclusion about what action to suggest to the patient.
+
+● The application should read questions, answers and outcomes from the JSON.
+● The application should start with the first question in the list.
+● The patient’s score starts at 0.
+● Each question contains a list of possible answers (exactly 2 per question). Answers
+have “id”, “label” (text to put on the button) and “score” (a number to be added to the
+current score for the patient).
+
+Requirements
+● As a user, I can navigate the questionnaire in a UI.
+● As a user, I can navigate back and forth in the questionnaire.
+● As a user, after answering all the questions, I am presented with suggested actions to take.
+● As a user that has completed the questionnaire, I can restart the questionnaire and take it again.
+● As a user, I can visualise the progress of the questionnaire as I answer the questions.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
